@@ -3,3 +3,9 @@ C:\Users\jeanc\Documents\Projetos\Tecnoliq\VGLConcentrador\Teste\bin\Debug\Teste
 C:\Users\jeanc\Documents\Projetos\Tecnoliq\VGLConcentrador\Teste\bin\Debug\Teste.pdb
 C:\Users\jeanc\Documents\Projetos\Tecnoliq\VGLConcentrador\Teste\obj\Debug\Teste.exe
 C:\Users\jeanc\Documents\Projetos\Tecnoliq\VGLConcentrador\Teste\obj\Debug\Teste.pdb
+C:\Users\jeanc\Documents\Projetos\Tecnoliq\Teste\bin\Debug\Teste.exe.config
+C:\Users\jeanc\Documents\Projetos\Tecnoliq\Teste\obj\Debug\Teste.exe
+C:\Users\jeanc\Documents\Projetos\Tecnoliq\Teste\obj\Debug\Teste.pdb
+C:\Users\jeanc\Documents\Projetos\Tecnoliq\Teste\bin\Debug\Teste.exe
+C:\Users\jeanc\Documents\Projetos\Tecnoliq\Teste\bin\Debug\Teste.pdb
+C:\Users\jeanc\Documents\Projetos\Tecnoliq\Teste\obj\Debug\Teste.csprojResolveAssemblyReference.cache

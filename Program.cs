@@ -13,8 +13,6 @@ namespace Teste
     {
         static void Main(string[] args)
         {
-            var ret = new byte[2] { 0x01, 0x74 }[1].ToString()[0];
-
             new Comunicacao().Iniciar();
         }
     }
@@ -24,7 +22,6 @@ namespace Teste
         SerialPort _serialPort;
         public Comunicacao()
         {
-            //ConverterHexaToDouble("E1E2E6E2E0E0E0E0");
             var baudRate = 5787;
             var portName = "/dev/ttyAMA0";
             _serialPort = new SerialPort()
@@ -36,29 +33,10 @@ namespace Teste
                 DataBits = 8,                   // No of Data bits = 8
                 StopBits = StopBits.One,        // No of Stop bits = 1
                 ReadTimeout = -1,
-                Handshake = System.IO.Ports.Handshake.None,
-                
-            //ReadBufferSize = 2000000
+                Handshake = Handshake.None
             };
             Console.WriteLine("Baudrate {0}", _serialPort.BaudRate);
             Console.WriteLine("Encoding {0}", _serialPort.Encoding);
-        }
-
-        private double ConverterHexaToDouble(string hexa)
-        {
-            var sbrValor = new StringBuilder();
-            for (var i = hexa.Length - 1; i > 0; i--)
-            {
-                sbrValor.Append(hexa[i]);
-                i--;
-            }
-            var vlrStr = sbrValor.ToString();
-            if (vlrStr.Length > 2)
-                vlrStr = vlrStr.Insert(vlrStr.Length - 2, ",");
-            var valor = 0.0;
-            double.TryParse(vlrStr, out valor);
-            Console.WriteLine("valor {0}", valor);
-            return valor;
         }
 
         public void Iniciar()
@@ -67,9 +45,6 @@ namespace Teste
             {
                 Console.WriteLine("Digite o cmd");
                 var cmd = Console.ReadLine().Trim();
-                Console.WriteLine("Baud rate {0}", _serialPort.BaudRate);
-                Console.WriteLine("Handshake {0}", _serialPort.Handshake);
-                Console.WriteLine("Parity {0}", _serialPort.Parity);
                 if (!string.IsNullOrWhiteSpace(cmd))
                 {
                     var arr = cmd.Split('-');
@@ -80,50 +55,13 @@ namespace Teste
                     var dadosRecebidos = new byte[0];
                     EnviarPacotes(lstByte.ToArray());
                     ReceberDados(out dadosRecebidos);
-                    //EnviarPacotes(lstByte.ToArray());
-                    //ReceberDados(out dadosRecebidos);
-                    //EnviarPacotes(lstByte.ToArray());
-                    //ReceberDados(out dadosRecebidos);
-                    //EnviarPacotes(lstByte.ToArray());
-                    //ReceberDados(out dadosRecebidos);
                 }
-
-                //else
-                //{
-                //    array = new byte[1] { 0x01 };
-                //    EnviarPacotes(array);
-                //    var dadosRecebidos = new byte[0];
-                //    ReceberDados(out dadosRecebidos);
-                //    cmd = Console.ReadLine();
-                //    array = new byte[1] { 0x04 };
-                //    EnviarPacotes(array);
-                //    dadosRecebidos = new byte[0];
-                //    ReceberDados(out dadosRecebidos);
-                //}
             }
-
-            //status
-
-
-        }
-
-        private byte[] StringToByteArray(string hex)
-        {
-            return Enumerable.Range(0, hex.Length)
-                                .Where(x => x % 2 == 0)
-                                .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
-                                .ToArray();
         }
 
 
         public bool EnviarPacotes(byte[] comando)
         {
-            //var sbr = new StringBuilder();
-            //foreach (var item in comando)
-            //{
-            //    sbr.Append(item);
-            //    sbr.Append(' ');
-            //}
             Console.WriteLine("Enviado {0}", ByteToHex(comando));
             try
             {
@@ -162,25 +100,12 @@ namespace Teste
                 for (var i = 0; i < bytes; i++)
                     lstByte.Add((byte)_serialPort.ReadByte());
                 qtd += bytes;
-                //for (var i = 0; i < bytes; i++)
-                //{
-                //    sbr.Append((byte)_serialPort.ReadByte());
-                //    sbr.Append(' ');
-                //}
                 Thread.Sleep(20);
             }
             while ((bytes = _serialPort.BytesToRead) > 0);
             _serialPort.DiscardOutBuffer();
             if (qtd == 0)
                 return false;
-            //dadosRecebidos = new byte[qtd];
-            //Console.WriteLine("Recebido {0}", );
-            //var arr = sbr.ToString().Split(' ');
-            //for (var i = 0; i < qtd; i++)
-            //{
-            //    if (arr[i] != string.Empty)
-            //        dadosRecebidos[i] = Convert.ToByte(arr[i]);
-            //}
             Console.WriteLine("Recebido {0}", ByteToHex(lstByte.ToArray()));
             return true;
         }
