@@ -1,0 +1,5 @@
+C:\Users\jeanc\Documents\Projetos\Tecnoliq\VGLConcentrador\Teste\bin\Release\Teste.exe.config
+C:\Users\jeanc\Documents\Projetos\Tecnoliq\VGLConcentrador\Teste\bin\Release\Teste.exe
+C:\Users\jeanc\Documents\Projetos\Tecnoliq\VGLConcentrador\Teste\bin\Release\Teste.pdb
+C:\Users\jeanc\Documents\Projetos\Tecnoliq\VGLConcentrador\Teste\obj\Release\Teste.exe
+C:\Users\jeanc\Documents\Projetos\Tecnoliq\VGLConcentrador\Teste\obj\Release\Teste.pdb
